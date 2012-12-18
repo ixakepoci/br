@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  vicinity: MyString
+  type: 
+  formatted_address: MyString
+  latlng: MyString
+  rating: 1.5
+  url: MyString
+  icon: MyString
+  html_attributions: MyString
+  reference: MyString
+  unique_google_id: MyString
+
+two:
+  name: MyString
+  vicinity: MyString
+  type: 
+  formatted_address: MyString
+  latlng: MyString
+  rating: 1.5
+  url: MyString
+  icon: MyString
+  html_attributions: MyString
+  reference: MyString
+  unique_google_id: MyString

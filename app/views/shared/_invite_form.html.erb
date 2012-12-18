@@ -1,0 +1,7 @@
+ <%= form_for @invite,  :html => {:class => "form-container", :id => 'createInvites_form'}  do |f| %>
+	<div class="form-title">How many invites to generate?</div>
+	<%= text_field :num_invites, params[:num_invites], :class =>"form-field", :id =>"numInvitesField" %>
+	<div class="submit-container">
+	<%= f.submit "Generate!" , :class =>"submit-button"%>
+	</div>
+<% end %>    

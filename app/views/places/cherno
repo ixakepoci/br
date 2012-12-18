@@ -1,0 +1,47 @@
+<div  class="form-container" id='giverreg_form'>
+	<%= form_for(@place) do |f| %>
+
+	<div class="form-title"><h2>Register your businnes!</h2></div>
+
+	<div class="form-title">Address</div>
+	<div id="searchTextField" class="form-field">
+		<%= f.text_field :full_address %>		
+	</div>
+	<br />
+
+	<div class="form-title">Email</div>
+	<div id="emailField" class="form-field">
+		<%= f.text_field :email %>		
+	</div>
+	<br />
+
+	<div class="form-title">Password</div>
+	<div id="passwordField" class="form-field">
+		<%= f.password_field :password %>		
+	</div>
+	<br />
+
+	<div class="form-title">Repeat password</div>
+	<div id="checkPasswordField" class="form-field">
+		<%= f.password_field :password_confirmation %>		
+	</div>
+	<br />	
+	<div class="submit-container">
+		<div class="submit-button">
+			<%= f.submit "Sign up" %>
+		</div>
+	</div>
+
+
+<% end %>
+</div>
+
+
+
+<%= #render 'shared/invite_form' %>
+     <% #unless @place.invites.empty? %>
+        <table class="invites" summary="Invites">
+          <%=# render @invites %>
+        </table>
+        <%=# will_paginate @invites %>
+      <% #end %>

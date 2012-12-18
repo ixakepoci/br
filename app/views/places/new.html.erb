@@ -1,0 +1,16 @@
+<div id="map"></div>
+
+
+
+
+<%=form_tag({ :action => "create"}, :method => "post", :class => "form-container") do%>
+	<div class="form-title"><h2>Register your businnes!</h2></div>
+	<div class="form-title">Full address</div>
+	<%= text_field_tag 'formatted_address', nil, :class => 'form-field', :id =>"searchTextField" %>
+	<br />
+
+	<div id="hidden_fields"></div>
+	<div class="submit-container">
+	<%= submit_tag "Next" , :class =>"submit-button"%>
+	</div>
+<% end %>
