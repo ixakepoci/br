@@ -4,13 +4,28 @@
   <title>Freebeer</title>
   <%= stylesheet_link_tag    "application" %>
   <%= stylesheet_link_tag    "kickstart-grid" %>
+  <%= stylesheet_link_tag    "foundation" %>
+  <%= stylesheet_link_tag    "style" %>
+  <%= stylesheet_link_tag    "swipebox" %>
+  <%= stylesheet_link_tag    "modern" %>
+  <%= stylesheet_link_tag    "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" %>
   <%= javascript_include_tag "kickstart" %>
   <%= javascript_include_tag "map" %>
-  <%= javascript_include_tag "jquery-1.8.2.min.js" %>
+  <%= javascript_include_tag "utils" %>
+  <%= javascript_include_tag "vendor/custom.modernizr" %>
+  <%= javascript_include_tag "jquery-1.9.0.min" %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false" %>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places" %>
   <%= javascript_include_tag "http://maps.google.com/maps/api/js?libraries=places&sensor=false" %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" %>
+  <%= javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui" %>
+   <script>
+$(function() {
+$( "#tabs" ).tabs();
+});
+</script>
 
+  <%= yield :head %>
   <%= csrf_meta_tags %>
 </head>
 <body onload="initialize()">
@@ -18,8 +33,7 @@
   <% if user_signed_in? %>
     Signed in as <%= current_user.email %>. Not you?
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+
   <% end %>
 </div>
 <%= yield %>

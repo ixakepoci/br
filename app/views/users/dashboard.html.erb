@@ -1,2 +1,22 @@
+<% content_for :head do %>
+	<%= javascript_include_tag "showPlacesAround" %>
+<% end %>
+
 hi user
-<h1><%= params[:is_place] %></h1>
+<%= @user.email%>
+<%@places.each do |place|%>
+	<%= link_to place.name, place %>
+	<%= form_tag(:controller => "users", :action => "get_invite", :method => "post") do%>
+		<%= hidden_field_tag(:place_id, place.id)%>
+		<%= submit_tag("Get invite")%>
+	<%end%>
+
+
+<%end%>
+
+<div class = "page">
+<div class = "content">
+    <div id="map-canvas"></div>
+		<h3>Places around you</h3>
+		<div id = "place-container" class = "place"></div>
+</div></div>

@@ -1,3 +1,93 @@
-hi place
-<%= render 'shared/invite_form' %>
+<% @photo_refs.each do |photo|%>
+	<%=image_tag(photo)%>
+<%end%>
+	<%= form_tag(:controller => "users", :action => "get_invite", :method => "post") do%>
+		<%= hidden_field_tag(:place_id, @place.id)%>
+		<%= submit_tag("Get invite")%>
+	<%end%>
 
+
+	<div id="response">
+    <p id="responseParagraph">Base text</p>
+</div>
+
+<script>
+    $.getJSON(<%="#{@link}"%>,
+        function(data) {
+            $('#responseParagraph').append("<p>"+data.length+"</p>");
+        });
+</script>
+
+<script type='text/javascript'>
+
+$(document).ready(function(){
+    $.getJSON(<%="#{@link}"%>, function(data) {
+        $.each(data, function(index,place) {
+            alert(place.html_attributions);
+        });
+    });
+});
+</script>
+
+<%=@link%>
+<script type='text/javascript'>
+	for (i = 0; i < myJSONResult.results.length; i++) {
+		myAddress[i] = myJSONResult.results[i].formatted_address;
+	}
+</script>
+<script type='text/javascript'>
+
+$.getJSON(<%="#{@link}"%>, function(data) {
+var items = [];
+$.each(data, function(key, val) {
+items.push('<li id="' + key + '">' + val + '</li>');
+});
+$('<ul/>', {
+'class': 'my-new-list',
+html: items.join('')
+}).appendTo('body');
+});
+</script>
+
+
+<script>
+    $.getJSON('https://maps.googleapis.com/maps/api/place/details/json?reference=CqQBlwAAAIzGUY9xc7phHYdAdNRoGmMvRrZ0u_GrBb7IQaKMAhNNjh-g0IAl2Jqx0lJ_JFgDxXczf0ChZtcypOR780oeVMUQPNnfKDExIKpvyMSfECaAGZcEvNlC7Q3SxdgUiPJJl-cMf-eYqf1s0Zws9xCvStjYz7bNMA78tfITVRZ4W8F_sAvOIamUtBET1WW9_30RxoQMebHmCMVCxhGQhHX2f_ISEEFrnstu14NJ5vwSzXl0cgsaFDYVfpsuxUgU4xwpU7O5S_r5vjka&amp;sensor=false&amp;key=AIzaSyCku1n0YSNZeoPeW2s5ObdAUvo7MBT8TiY',
+        function(data) {
+            $('#responseParagraph').append("<p>"+data.length+"</p>");
+        });
+</script>
+
+<script type='text/javascript'>
+
+$(document).ready(function(){
+    $.getJSON('https://maps.googleapis.com/maps/api/place/details/json?reference=CqQBlwAAAIzGUY9xc7phHYdAdNRoGmMvRrZ0u_GrBb7IQaKMAhNNjh-g0IAl2Jqx0lJ_JFgDxXczf0ChZtcypOR780oeVMUQPNnfKDExIKpvyMSfECaAGZcEvNlC7Q3SxdgUiPJJl-cMf-eYqf1s0Zws9xCvStjYz7bNMA78tfITVRZ4W8F_sAvOIamUtBET1WW9_30RxoQMebHmCMVCxhGQhHX2f_ISEEFrnstu14NJ5vwSzXl0cgsaFDYVfpsuxUgU4xwpU7O5S_r5vjka&amp;sensor=false&amp;key=AIzaSyCku1n0YSNZeoPeW2s5ObdAUvo7MBT8TiY', function(data) {
+        $.each(data, function(index,place) {
+            alert(place.html_attributions);
+        });
+    });
+});
+</script>
+
+https://maps.googleapis.com/maps/api/place/details/json?reference=CqQBlwAAAIzGUY9xc7phHYdAdNRoGmMvRrZ0u_GrBb7IQaKMAhNNjh-g0IAl2Jqx0lJ_JFgDxXczf0ChZtcypOR780oeVMUQPNnfKDExIKpvyMSfECaAGZcEvNlC7Q3SxdgUiPJJl-cMf-eYqf1s0Zws9xCvStjYz7bNMA78tfITVRZ4W8F_sAvOIamUtBET1WW9_30RxoQMebHmCMVCxhGQhHX2f_ISEEFrnstu14NJ5vwSzXl0cgsaFDYVfpsuxUgU4xwpU7O5S_r5vjka&sensor=false&key=AIzaSyCku1n0YSNZeoPeW2s5ObdAUvo7MBT8TiY
+<script type='text/javascript'>
+	for (i = 0; i < myJSONResult.results.length; i++) {
+		myAddress[i] = myJSONResult.results[i].formatted_address;
+	}
+</script>
+<script type='text/javascript'>
+
+$.getJSON('https://maps.googleapis.com/maps/api/place/details/json?reference=CqQBlwAAAIzGUY9xc7phHYdAdNRoGmMvRrZ0u_GrBb7IQaKMAhNNjh-g0IAl2Jqx0lJ_JFgDxXczf0ChZtcypOR780oeVMUQPNnfKDExIKpvyMSfECaAGZcEvNlC7Q3SxdgUiPJJl-cMf-eYqf1s0Zws9xCvStjYz7bNMA78tfITVRZ4W8F_sAvOIamUtBET1WW9_30RxoQMebHmCMVCxhGQhHX2f_ISEEFrnstu14NJ5vwSzXl0cgsaFDYVfpsuxUgU4xwpU7O5S_r5vjka&amp;sensor=false&amp;key=AIzaSyCku1n0YSNZeoPeW2s5ObdAUvo7MBT8TiY', function(data) {
+var items = [];
+$.each(data, function(key, val) {
+items.push('<li id="' + key + '">' + val + '</li>');
+});
+$('<ul/>', {
+'class': 'my-new-list',
+html: items.join('')
+}).appendTo('body');
+});
+</script>
+
+
+</body>
+</html>

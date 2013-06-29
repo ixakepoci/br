@@ -4,14 +4,15 @@ function initialize() {
   var mapOptions = {
     center: new google.maps.LatLng(lat, lng),
     zoom: 14,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-     
+    mapTypeId: google.maps.MapTypeId.ROADMAP  
   };
   var map = new google.maps.Map(document.getElementById('map'),mapOptions);
   var input = document.getElementById('searchTextField');
 
   var autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.bindTo('bounds', map);
+  
+
   var infowindow = new google.maps.InfoWindow();
   var marker = new google.maps.Marker({map: map});
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
@@ -54,6 +55,8 @@ function initialize() {
       '<input name="place[name]" type="hidden" value="'+place.name+'"/>'+
       '<input name="place[formatted_address]" type="hidden" value="'+place.formatted_address+'" />' +
       '<input name="place[latlng]" type="hidden" value="'+place.geometry.location+'"/>' +
+      '<input name="place[lat]" type="hidden" value="'+place.geometry.location.lat+'"/>' +
+      '<input name="place[lng]" type="hidden" value="'+place.geometry.location.lng+'"/>' +
       '<input name="place[reference]" type="hidden" value="'+place.reference+'"/>' +
       '<input name="place[unique_google_id]" type="hidden" value="'+place.unique_google_id+'"/>' +
       '<input name="place[url]" type="hidden" value="'+place.url+'"/>' +

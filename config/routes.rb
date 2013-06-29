@@ -1,17 +1,23 @@
 Freebeer::Application.routes.draw do
 
+  resources :events
+
   resources :places
   resources :invites
-devise_for :users do
-  get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
-  get "/users/dashboard"
-  get "/places/dashboard"
+  devise_for :users do
+    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+    root :to => 'devise/sessions#new'
+  end  
+  
 
-#  post "/users/sign_up" => "devise/registrations#new"
-  post "/users/sign_up" => "registrations#create"
-end  
-root :to => 'pages#index'
+  #root :to => 'pages#index'
 
+  get "users/dashboard"
+  get "places/dashboard"
+match 'myplace'=>'places#myplace'
+  match 'places/:id' => 'places#show'
+  match 'users/dashboard'=>'users#get_invite'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

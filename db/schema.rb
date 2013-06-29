@@ -11,14 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218000214) do
+ActiveRecord::Schema.define(:version => 20130627121552) do
+
+  create_table "events", :force => true do |t|
+    t.integer  "place_id"
+    t.string   "name"
+    t.string   "short_description"
+    t.string   "expanded_description"
+    t.datetime "event_start"
+    t.datetime "event_end"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
 
   create_table "invites", :force => true do |t|
+    t.integer  "event_id"
     t.string   "content"
     t.integer  "place_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.boolean  "taken"
+    t.integer  "taken_by"
+    t.boolean  "is_valid"
   end
 
   create_table "places", :force => true do |t|
@@ -37,6 +50,9 @@ ActiveRecord::Schema.define(:version => 20121218000214) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.boolean  "incomplete"
+    t.float    "lat"
+    t.float    "lng"
+    t.string   "email"
   end
 
   create_table "users", :force => true do |t|
@@ -54,6 +70,8 @@ ActiveRecord::Schema.define(:version => 20121218000214) do
     t.datetime "updated_at",                             :null => false
     t.boolean  "is_place"
     t.integer  "place_id"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

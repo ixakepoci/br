@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+
+<html>
+  <head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+
+
+  
+  <link rel="stylesheet" href="css/foundation.css" />
+  
+
+  <script src="js/vendor/custom.modernizr.js"></script>
+
+    <title>Place details</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" href="source/swipebox.css">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+		<script src="lib/jquery-1.9.0.min.js"></script>
+		<script src="source/jquery.swipebox.min.js"></script>
+		<script src="lib/ios-orientationchange-fix.js"></script>
+    <script>
+			var directionsDisplay;
+			var directionsService = new google.maps.DirectionsService();
+			function initialize() {
+  			directionsDisplay = new google.maps.DirectionsRenderer();
+				var userLocation = new google.maps.LatLng(50.019952, 14.424090999999976);
+  			var map = new google.maps.Map(document.getElementById('map-canvas'), {
+    			mapTypeId: google.maps.MapTypeId.ROADMAP,
+    			center: userLocation,
+    			zoom: 15
+  			});
+				directionsDisplay.setMap(map);
+  			var request = {
+    			reference: 'CnRmAAAA8FlJiHRky3aLurG_t0UEObZHJLasq8LrTyGJ1iSYVhzwIiZ2vB88WJDN0MpTE46KOeF3RsRibVYVZAcOLQ9BZrCkSefRTa2SD4JnizQMuORM9xWTd3kO3y6TlqkBFKtCBUDW1FK4zu8oNkkPKc97PRIQtb72zw7RImgFEnTqYjnqIRoU6uPEnf9h42799JgWJiJylzP6RZE'
+  			};
+  			var infowindow = new google.maps.InfoWindow();
+  			var service = new google.maps.places.PlacesService(map);	
+//-------------------
+  			service.getDetails(request, function(place, status) {
+    			if (status == google.maps.places.PlacesServiceStatus.OK) {
+						map.setCenter(place.geometry.location);
+      			var marker = new google.maps.Marker({map: map,position: place.geometry.location});
+						var photos = place.photos;
+						var photoURLbig;
+						var photoURLsmall;
+						google.maps.event.addListenerOnce(map, 'idle', function(){
+							var descrString = "<div id = 'button-container'><a href='#' class='button'>Get invite</a></div><h3>"+place.name+"</h3>";
+							for(i=0;i<place.reviews.length;i++){
+								descrString+="<div class='panel'><span>"+place.reviews[i].text+"</span></div></br>";
+							}
+        			document.getElementById('place-container').innerHTML = descrString;				
+							var photoString = "";
+							for(i=0;i<photos.length;i++){
+								photoURLbig = photos[i].getUrl({'maxWidth': 500, 'maxHeight': 500});
+								photoURLsmall = photos[i].getUrl({'maxWidth': 150, 'maxHeight': 150});
+								photoString += "<a href='"+photoURLbig+"' class='swipebox'><img src='"+photoURLsmall+"' ></a>";
+							}
+							document.getElementById('pictures').innerHTML = photoString;
+							$(".swipebox").swipebox();
+					});
+    		}
+    		var start = userLocation;
+    		var end = place.geometry.location;
+  			var routeRequest = {
+      		origin:start,
+      		destination:end,
+      		travelMode: google.maps.DirectionsTravelMode.DRIVING
+  			};
+  			directionsService.route(routeRequest, function(response, status) {
+    		if (status == google.maps.DirectionsStatus.OK) {directionsDisplay.setDirections(response);}
+  	});
+//----------------------
+  });
+}
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+		<div id = "place-container" class = "place"></div>
+		<div id="pictures"></div>
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+  
+  <script src="js/foundation.min.js"></script>
+  <!--
+  
+  <script src="js/foundation/foundation.js"></script>
+  
+  <script src="js/foundation/foundation.alerts.js"></script>
+  
+  <script src="js/foundation/foundation.clearing.js"></script>
+  
+  <script src="js/foundation/foundation.cookie.js"></script>
+  
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  
+  <script src="js/foundation/foundation.forms.js"></script>
+  
+  <script src="js/foundation/foundation.joyride.js"></script>
+  
+  <script src="js/foundation/foundation.magellan.js"></script>
+  
+  <script src="js/foundation/foundation.orbit.js"></script>
+  
+  <script src="js/foundation/foundation.reveal.js"></script>
+  
+  <script src="js/foundation/foundation.section.js"></script>
+  
+  <script src="js/foundation/foundation.tooltips.js"></script>
+  
+  <script src="js/foundation/foundation.topbar.js"></script>
+  
+  <script src="js/foundation/foundation.interchange.js"></script>
+  
+  <script src="js/foundation/foundation.placeholder.js"></script>
+  
+  -->
+  
+  <script>
+    $(document).foundation();
+  </script>
+  </body>
+
+</html>
+
+

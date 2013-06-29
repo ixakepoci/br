@@ -159,8 +159,8 @@ body{
    }
 .regbutton-container{
 	position:absolute;
-	top:50px;
-	right: 400px;
+	bottom:50px;
+	left: 20px;
 
 }
 .clear{clear:both;}
@@ -183,9 +183,8 @@ body{
 	width:600px;
 }
 #login_form{
-	position: absolute;
-	top:100px;
-	left:550px;
+	
+	margin:100px auto;
 	width:300px;
 }
  #giverreg_form .form-field{width:580px;}

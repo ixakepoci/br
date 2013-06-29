@@ -1,17 +1,16 @@
-<h2>Sign innnn</h2>
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :email %></p>
-  <p><%= f.text_field :email %></p>
-
-  <p><%= f.label :password %></p>
-  <p><%= f.password_field :password %></p>
-
-  <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-  <% end -%>
-
-  <p><%= f.submit "Sign in" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+<div class='clear'></div>
+<div class="form-container" id='login_form'>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div class="form-title"><h2>Log in</h2></div>		
+  <div class="form-title">Email</div> 
+   <%= f.text_field( :email, :class => "form-field") %> <br />
+  <div class="form-title">Password</div>
+  <%= f.password_field( :password, :class => "form-field") %> <br />
+  <%= f.submit( "Sign in", :class => "submit-button") %>
+  <%= link_to "Sign-Up", new_user_registration_path, :class => "submit-button" %><br />
+  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+  <% end %>
+</div>
+<div class ='regbutton-container'>
+  <%= link_to "List your place", new_place_path, :class => "button" %>
+</div>

@@ -1,7 +1,3 @@
-<div class ='regbutton-container'>
-	<%= link_to "Beer giver registration", new_place_path, :class => "button" %>
-	<%= link_to "Beer lover registration", new_user_registration_path, :class => "button" %>
-</div>
 <div class='clear'></div>
 <div class="form-container" id='login_form'>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -11,5 +7,9 @@
   <div class="form-title">Password</div>
   <%= f.password_field( :password, :class => "form-field") %> <br />
   <%= f.submit( "Sign in", :class => "submit-button") %>
+  <%= link_to "Sign-Up", new_user_registration_path, :class => "submit-button" %>
   <% end %>
+</div>
+<div class ='regbutton-container'>
+  <%= link_to "Beer giver registration", new_place_path, :class => "button" %>
 </div>

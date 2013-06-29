@@ -1,0 +1,41 @@
+body{ 
+font-size:18px; color:#0F0F0F; 
+background:#dbc8ac url('img/subtle-pattern-1.jpg') repeat;
+overflow-x: hidden;
+}
+
+#map-canvas{
+position: fixed;
+margin-top: 65px;
+margin-right: 50px;
+float: right;
+width: 300px;
+height: 300px;
+border:solid 1px #2d2d2d;  
+-moz-border-radius: 5px;  
+-webkit-border-radius: 5px; 
+border-radius: 5px;
+}
+#place-container{
+padding-top:0px;
+float:left;
+width:610px;
+}
+#place-container span{
+position:relative;
+left:20px; 
+padding-right:20px;
+color:#000;
+}
+#pictures{
+	position: absolute;
+	top: 600px;
+	right: 50px;
+	width: 500px;
+	}	
+#button-container{
+	position: absolute;
+	top:40px;
+	right:50px;
+}
+
